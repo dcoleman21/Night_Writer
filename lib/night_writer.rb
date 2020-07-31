@@ -1,3 +1,10 @@
+class FileReader
+  def read
+    filename = ARGV[0]
+    File.read(filename)
+  end
+end
+
 class NightWriter
   attr_reader :file_reader
 
