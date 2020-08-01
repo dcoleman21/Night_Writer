@@ -55,7 +55,7 @@ class Translator
       lines
     end
 
-    def decode(message)
+    def encode_to_braille(message)
       char_array = split_characters(message)
       braille_array = translate_to_braille(char_array)
       grid = transpose(braille_array)
