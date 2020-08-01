@@ -47,4 +47,8 @@ class Translator
         @braille_hash[letter]
       end
     end
+
+    def transpose(braille_array)
+      braille_array.transpose
+    end
 end
