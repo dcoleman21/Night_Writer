@@ -65,7 +65,7 @@ class Translator
   def format_long(strings)
     strings.map do |string|
       string.scan(/.{1,80}/)
-    end
+    end.transpose.flatten.join("\n")
   end
 
   def encode_to_braille(message)
