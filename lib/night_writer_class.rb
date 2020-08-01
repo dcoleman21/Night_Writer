@@ -11,7 +11,12 @@ class NightWriter
     command_line_output
   end
 
+  # def encode_to_braille(message)
+  #   #add encode method from translator class
+  # end
+
   def command_line_output
     puts "Created '#{@braille}' containing #{@message.chomp.length} characters"
+    File.write(@braille, File.read(ARGV[0])
   end
 end
