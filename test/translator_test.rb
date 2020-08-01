@@ -28,8 +28,11 @@ class TranslatorTest < Minitest::Test
     assert_equal expected2, translator.translate_to_braille(["h", "e", "l", "l", "o"])
   end
 
-  def method_name
-
+  def test_combine_rows_and_columns_to_create_grid
+    translator = Translator.new
+    actual = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."], ["0.", "0.", "0."], ["0.", ".0", "0."]]
+    expected = [["0.", "0.", "0.", "0.", "0."], ["00", ".0", "0.", "0.", ".0"], ["..", "..", "0.", "0.", "0."]]
+    assert_equal expected, translator.transpose(actual)
   end
 
 end
