@@ -47,7 +47,7 @@ class TranslatorTest < Minitest::Test
     assert_equal expected, translator.transpose(actual)
   end
 
-  def test_create_strings
+  def test_combine_to_create_strings
     translator = Translator.new
     actual = [["0.", "0.", "0.", "0.", "0."],
               ["00", ".0", "0.", "0.", ".0"],
@@ -58,7 +58,42 @@ class TranslatorTest < Minitest::Test
     assert_equal expected, translator.create_strings(actual)
   end
 
+  def test_format_lines_up_to_eighty
+    translator = Translator.new
+    actual = ["0.0.0.0.0.", "00.00.0..0", "....0.0.0."]
 
+    expected = "0.0.0.0.0.\n00.00.0..0\n....0.0.0."
 
+    assert_equal expected, translator.format_lines(actual)
+  end
 
+  def test_can_format_lines_beyond_eighty
+    translator = Translator.new
+    input = ["0.0.0.0.0.00.00.0..0....0.0.0.0.0.0.0.0.00.00.0..0....0.0.0.",
+              "0.0.0.0.0.00.00.0..0....0.0.0.0.0.0.0.0.00.00.0..0....0.0.0."]
+
+    expected = "0.0.0.0.0.00.00.0..0....0.0.0.0.0.0.0.0.00.00.0..0....0.0.0.\n0.0.0.0.0.00.00.0..0....0.0.0.0.0.0.0.0.00.00.0..0....0.0.0."
+
+    assert_equal expected, translator.format_lines(input)
+  end
+
+  def test_encode_to_braille
+    translator = Translator.new
+
+    input = "helloworld"
+
+    expected = "0.0.0.0.0..00.0.0.00\n00.00.0..000.0000..0\n....0.0.0..00.0.0..."
+    
+    assert_equal expected, translator.encode_to_braille(input)
+  end
+# #w
+# [".0", "00", ".0"]
+# #o
+# ["0.", ".0", "0."]
+# #r
+# ["0.", "00", "0."]
+# #l
+# ["0.", "0.", "0."]
+# #d
+# ["00", ".0", ".."]
 end
