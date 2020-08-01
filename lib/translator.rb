@@ -33,11 +33,6 @@ class Translator
       }
     end
 
-    def decode(message)
-      char_array = split_characters(message)
-      braille_array = translate_to_braille(char_array)
-    end
-
     def split_characters(message)
       message.chars
     end
@@ -50,5 +45,21 @@ class Translator
 
     def transpose(braille_array)
       braille_array.transpose
+    end
+
+    def create_strings(transposed)
+      lines = []
+      transposed.each do |line|
+        lines << line.join
+      end
+      lines
+    end
+
+    def decode(message)
+      char_array = split_characters(message)
+      braille_array = translate_to_braille(char_array)
+      grid = transpose(braille_array)
+      strings = create_strings(transposed)
+      format_lines(strings)
     end
 end
