@@ -23,16 +23,42 @@ class TranslatorTest < Minitest::Test
   def test_translate_multiple_characters
     translator = Translator.new
     expected1 = [["00", ".0", "00"], ["0.", ".0", "0."]]
-    expected2 = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."], ["0.", "0.", "0."], ["0.", ".0", "0."]]
+    expected2 = [["0.", "00", ".."],
+                 ["0.", ".0", ".."],
+                 ["0.", "0.", "0."],
+                 ["0.", "0.", "0."],
+                 ["0.", ".0", "0."]]
     assert_equal expected1, translator.translate_to_braille(["y", "o"])
     assert_equal expected2, translator.translate_to_braille(["h", "e", "l", "l", "o"])
   end
 
   def test_combine_rows_and_columns_to_create_grid
     translator = Translator.new
-    actual = [["0.", "00", ".."], ["0.", ".0", ".."], ["0.", "0.", "0."], ["0.", "0.", "0."], ["0.", ".0", "0."]]
-    expected = [["0.", "0.", "0.", "0.", "0."], ["00", ".0", "0.", "0.", ".0"], ["..", "..", "0.", "0.", "0."]]
+    actual = [["0.", "00", ".."],
+              ["0.", ".0", ".."],
+              ["0.", "0.", "0."],
+              ["0.", "0.", "0."],
+              ["0.", ".0", "0."]]
+
+    expected = [["0.", "0.", "0.", "0.", "0."],
+                ["00", ".0", "0.", "0.", ".0"],
+                ["..", "..", "0.", "0.", "0."]]
+
     assert_equal expected, translator.transpose(actual)
   end
+
+  def test_create_strings
+    translator = Translator.new
+    actual = [["0.", "0.", "0.", "0.", "0."],
+              ["00", ".0", "0.", "0.", ".0"],
+              ["..", "..", "0.", "0.", "0."]]
+
+    expected = ["0.0.0.0.0.", "00.00.0..0", "....0.0.0."]
+
+    assert_equal expected, translator.create_strings(actual)
+  end
+
+
+
 
 end
