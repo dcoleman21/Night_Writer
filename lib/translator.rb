@@ -1,5 +1,4 @@
 class Translator
-
   attr_reader   :braille_hash
 
   def initialize
@@ -70,10 +69,10 @@ class Translator
   end
 
   def encode_to_braille(message)
-    char_array = split_characters(message)
+    char_array    = split_characters(message)
     braille_array = translate_to_braille(char_array)
-    grid = transpose(braille_array)
-    strings = create_strings(grid)
+    grid          = transpose(braille_array)
+    strings       = create_strings(grid)
     format_lines(strings)
   end
 end
