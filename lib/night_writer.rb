@@ -1,4 +1,4 @@
-require './lib/night_writer_class'
+require_relative 'night_writer_class'
 
 message, braille = ARGV
 
