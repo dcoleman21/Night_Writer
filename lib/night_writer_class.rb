@@ -1,5 +1,5 @@
 # require_relative 'reader_file'
-require_relative 'translator'
+require_relative 'translator_braille'
 class ReaderFile #reads from message.txt file
   def read
     first_message = ARGV[0]
@@ -15,7 +15,7 @@ class NightWriter
   def initialize(message, braille)
     @reader = ReaderFile.new
     @message = @reader.read
-    @translator = Translator.new
+    @translator = TranslatorBraille.new
     @braille = braille
     command_line_output
     encode_message_to_braille
