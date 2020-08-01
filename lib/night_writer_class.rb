@@ -17,6 +17,6 @@ class NightWriter
 
   def command_line_output
     puts "Created '#{@braille}' containing #{@message.chomp.length} characters"
-    File.write(@braille, File.read(ARGV[0])
+    File.write(@braille, File.read(ARGV[0]))
   end
 end
