@@ -1,3 +1,4 @@
+require './test/test_helper'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/translator'
@@ -83,7 +84,7 @@ class TranslatorTest < Minitest::Test
     input = "helloworld"
 
     expected = "0.0.0.0.0..00.0.0.00\n00.00.0..000.0000..0\n....0.0.0..00.0.0..."
-    
+
     assert_equal expected, translator.encode_to_braille(input)
   end
 # #w
