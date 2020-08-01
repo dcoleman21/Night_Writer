@@ -64,7 +64,7 @@ class Translator
 
   def format_long(strings)
     strings.map do |string|
-      string.scan(/.{1, 80}/)
+      string.scan(/.{1,80}/)
     end
   end
 
