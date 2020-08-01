@@ -1,9 +1,16 @@
-require_relative 'reader_file'
+# require_relative 'reader_file'
 require_relative 'translator'
+class ReaderFile #reads from message.txt file
+  def read
+    first_message = ARGV[0]
+    File.read(first_message).chomp
+  end
+end
 
 class NightWriter
-  attr_reader :message
-  #             :braille
+  attr_reader :reader_file,
+              :message,
+              :braille
 
   def initialize(message, braille)
     @reader = ReaderFile.new
@@ -24,3 +31,5 @@ class NightWriter
     puts "Created '#{@braille}' containing #{@message.length} characters"
   end
 end
+
+# puts ARGV.inspect
