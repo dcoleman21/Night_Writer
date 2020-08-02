@@ -1,6 +1,6 @@
 require './test/test_helper'
-require 'minitest/autorun'
-require 'minitest/pride'
+# require 'minitest/autorun'
+# require 'minitest/pride'
 require './lib/reader_file'
 
 class ReaderFileTest < Minitest::Test
