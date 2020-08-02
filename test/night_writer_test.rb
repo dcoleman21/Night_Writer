@@ -1,8 +1,5 @@
-require './test/test_helper'
-require 'minitest/autorun'
-require 'minitest/pride'
-require './lib/night_writer_class'
-# require './lib/reader_file'
+require_relative 'test_helper.rb'
+require './lib/night_writer.rb'
 
 class NightWriterTest < Minitest::Test
 
@@ -15,6 +12,18 @@ class NightWriterTest < Minitest::Test
 
     assert_instance_of NightWriter, night_writer
   end
+
+
+
+# class NightWriterTest < Minitest::Test
+#
+#
+#   def test_output_to_file
+#     night_writer = NightWriter.new
+#
+#     assert_equal 0.\n..\n.., night_writer.encode_to_braille("abc")
+#   end
+# end
 
 
 end
