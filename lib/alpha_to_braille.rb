@@ -1,7 +1,7 @@
-require_relative 'translatable'
+require_relative 'translateable'
 
 class AlphaToBraille
-  include Translatable
+  include Translateable
 
   def to_braille(string)
     output = []
