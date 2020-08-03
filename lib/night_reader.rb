@@ -1,9 +1,9 @@
-require_relative 'alpha_to_braille'
+require_relative 'braille_to_alpha'
 
 in_file = File.open(ARGV[0], "r")
 message = in_file.read.chomp
-alpha_to_braille = AlphaToBraille.new
-translated = alpha_to_braille.to_braille(message)
+braille_to_alpha = BrailleToAlpha.new
+translated = braille_to_alpha.to_english(message)
 in_file.close
 
 out_file = File.open(ARGV[1], "w")
@@ -12,4 +12,5 @@ out_file.close
 
 puts "Created #{ARGV[1]} containing #{message.length} characters"
 
-#ruby ./lib/night_writer.rb message.txt braille.txt
+
+#ruby ./lib/night_reader.rb braille.txt original_message.txt
