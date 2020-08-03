@@ -1,6 +1,4 @@
 require_relative 'test_helper'
-require './lib/alpha_to_braille'
-
 
 class AlphaToBrailleTest < Minitest::Test
 
