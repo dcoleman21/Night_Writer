@@ -1,37 +1,15 @@
-require 'csv'
 require_relative 'alpha_to_braille'
-require_relative 'braille_to_alpha'
 
-class NightWriter
-  attr_reader :message,
-              :braille,
-              :reader
+in_file = File.open(ARGV[0], "r")
+message = in_file.read.chomp
+alpha_to_braille = AlphaToBraille.new
+translated = alpha_to_braille.to_braille(message)
+in_file.close
 
+out_file = File.open(ARGV[1], "w")
+out_file.write(translated)
+out_file.close
 
-  def initialize(message, braille)
-    @message = "message.txt"
-    @braille = "braille.txt"
-    @reader = File.new("message.txt")
-  end
+puts "Created #{ARGV[1]} containing #{message.length} characters"
 
-#   def encode_file_to_braille
-#     plain = reader.read
-#     braille = to_braille(string)
-#
-#     write_encoded_braille_to_text_file(braille)
-#   end
-#
-#   def encode_to_braille(input)
-#     braille_1 = AlphaToBraille.new
-#     braille_1.to_braille(input)
-#     # braille_1.braille_translation
-#   end
-#
-#   def write_encoded_braille_to_text_file(braille)
-#     File.write("braille.txt", braille)
-#   end
-#   # english = BRAILLE_HASH.invert
-#
-end
-# new_night_writer = NightWriter.new
-# new_night_writer.encode_file_to_braille
+#ruby ./lib/night_writer.rb message.txt braille.txt
